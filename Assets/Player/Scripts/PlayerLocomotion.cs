@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using Unity.Android.Gradle;
 using Unity.Android.Gradle.Manifest;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,6 +15,8 @@ public class PlayerLocomotion : MonoBehaviour
     TestSteeringSetup inputActions;
     InputAction move;
     InputAction look;
+
+    InputAction uiNavigate, uiSubmit, uiCancel, uiPoint, uiClick, uiScrollWheel, uiMiddleClick, uiRightClick, uiTrackedDevicePosition, uiTrackedDeviceOrientation;
 
     CharacterController characterController;
     public Transform cameraContainer;
@@ -46,7 +51,14 @@ public class PlayerLocomotion : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Debug.Log("Move: " + move.ReadValue<Vector2>());
+        if(move.ReadValue<Vector2>() != Vector2.zero)
+        {
+            Debug.Log("Move: " + move.ReadValue<Vector2>());
+        }
+        if (look.ReadValue<Vector2>() != Vector2.zero)
+        {
+            Debug.Log("Look: " + look.ReadValue<Vector2>());
+        }
 
         Locomotion();
         RotateAndLook();
@@ -62,6 +74,85 @@ public class PlayerLocomotion : MonoBehaviour
 
         inputActions.Player.Fire.performed += Fire;
         inputActions.Player.Fire.Enable();
+
+
+        //uiNavigate = inputActions.UI.Navigate;
+        //uiSubmit = inputActions.UI.Submit;
+        //uiCancel = inputActions.UI.Cancel;
+        //uiPoint = inputActions.UI.Point;
+        //uiClick = inputActions.UI.Click;
+        //uiScrollWheel = inputActions.UI.ScrollWheel;
+        //uiMiddleClick = inputActions.UI.MiddleClick;
+        //uiRightClick = inputActions.UI.Point;
+        //uiTrackedDevicePosition = inputActions.UI.TrackedDevicePosition;
+        //uiTrackedDeviceOrientation = inputActions.UI.TrackedDeviceOrientation;
+
+        inputActions.UI.Navigate.performed += UI_Navigate;
+        inputActions.UI.Submit.performed += UI_Submit;
+        inputActions.UI.Cancel.performed += UI_Cancel;
+        inputActions.UI.Point.performed += UI_Point;
+        inputActions.UI.Click.performed += UI_Click;
+        inputActions.UI.ScrollWheel.performed += UI_ScrollWheel;
+        inputActions.UI.MiddleClick.performed += UI_MiddleClick;
+        inputActions.UI.Point.performed += UI_Point;
+        inputActions.UI.TrackedDevicePosition.performed += UI_TrackedDevicePosition;
+        inputActions.UI.TrackedDeviceOrientation.performed += UI_TrackedDeviceOrientation;
+
+        inputActions.UI.Navigate.Enable();
+        inputActions.UI.Submit.Enable();
+        inputActions.UI.Cancel.Enable();
+        inputActions.UI.Point.Enable();
+        inputActions.UI.Click.Enable();
+        inputActions.UI.ScrollWheel.Enable();
+        inputActions.UI.MiddleClick.Enable();
+        inputActions.UI.Point.Enable();
+        inputActions.UI.TrackedDevicePosition.Enable();
+        inputActions.UI.TrackedDeviceOrientation.Enable();
+    }
+
+    private void UI_TrackedDeviceOrientation(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_TrackedDeviceOrientation");
+    }
+
+    private void UI_TrackedDevicePosition(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_TrackedDevicePosition");
+    }
+
+    private void UI_MiddleClick(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_MiddleClick");
+    }
+
+    private void UI_ScrollWheel(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_ScrollWheel");
+    }
+
+    private void UI_Click(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_Click");
+    }
+
+    private void UI_Point(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_Point");
+    }
+
+    private void UI_Cancel(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_Cancel");
+    }
+
+    private void UI_Submit(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_Submit");
+    }
+
+    private void UI_Navigate(InputAction.CallbackContext context)
+    {
+        Debug.Log("UI_Navigate");
     }
 
     private void OnDisable()
@@ -69,11 +160,24 @@ public class PlayerLocomotion : MonoBehaviour
         move.Disable();
         look.Disable();
         inputActions.Player.Fire.Disable();
+
+
+        uiNavigate.Disable();
+        uiSubmit.Disable();
+        uiCancel.Disable();
+        uiPoint.Disable();
+        uiClick.Disable();
+        uiScrollWheel.Disable();
+        uiMiddleClick.Disable();
+        uiRightClick.Disable();
+        uiTrackedDevicePosition.Disable();
+        uiTrackedDeviceOrientation.Disable();
     }
 
     private void Fire(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        Debug.Log("Fire Button Pressed");
     }
 
     void Locomotion()
@@ -96,10 +200,17 @@ public class PlayerLocomotion : MonoBehaviour
         rotateX = lookInput.x * mouseSensitivity;
         rotateY -= lookInput.y * mouseSensitivity;
 
+        rotateX += cameraContainer.transform.localRotation.eulerAngles.y;
+        //rotateY += cameraContainer.transform.localRotation.eulerAngles.x;
+
+        //rotateX = Mathf.Clamp(rotateX, -30f, +30f);
         rotateY = Mathf.Clamp(rotateY, lookUpClamp, lookDownClamp);
 
-        cameraContainer.transform.Rotate(0f, rotateX, 0f);
+        //Debug.Log("XY: " + rotateX + "," + rotateY);
 
-        cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, 0f, 0f);
+        //cameraContainer.transform.Rotate(0f, rotateX, 0f);
+        //cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, transform.localRotation.y, transform.localRotation.z);
+
+        cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, rotateX, 0f);
     }
 }
