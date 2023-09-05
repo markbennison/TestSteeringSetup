@@ -17,6 +17,7 @@ public class PlayerLocomotion : MonoBehaviour
     InputAction look;
 
     InputAction turn;
+    InputAction turnx;
     InputAction breakPedal;
 
     InputAction uiNavigate, uiSubmit, uiCancel, uiPoint, uiClick, uiScrollWheel, uiMiddleClick, uiRightClick, uiTrackedDevicePosition, uiTrackedDeviceOrientation;
@@ -63,15 +64,16 @@ public class PlayerLocomotion : MonoBehaviour
         //    Debug.Log("Look: " + look.ReadValue<Vector2>());
         //}
 
-        if (turn.ReadValue<float>() != 0f)
-        {
-            Debug.Log("Turn: " + turn.ReadValue<float>());
-        }
-        if (breakPedal.ReadValue<float>() != 0f)
-        {
-            Debug.Log("Break Pedal: " + breakPedal.ReadValue<float>());
-        }
 
+        Debug.Log("Turn: " + turn.ReadValue<Vector2>().x);
+        Debug.Log("Move: " + move.ReadValue<Vector2>().x);
+
+
+        //if (breakPedal.ReadValue<float>() != 0f)
+        //{
+        //    Debug.Log("Break Pedal: " + breakPedal.ReadValue<float>());
+        //}
+        Debug.Log("Break Pedal: " + breakPedal.ReadValue<float>());
 
         //Locomotion();
         //RotateAndLook();
@@ -106,27 +108,27 @@ public class PlayerLocomotion : MonoBehaviour
         //uiTrackedDevicePosition = inputActions.UI.TrackedDevicePosition;
         //uiTrackedDeviceOrientation = inputActions.UI.TrackedDeviceOrientation;
 
-        inputActions.UI.Navigate.performed += UI_Navigate;
-        inputActions.UI.Submit.performed += UI_Submit;
-        inputActions.UI.Cancel.performed += UI_Cancel;
-        inputActions.UI.Point.performed += UI_Point;
-        inputActions.UI.Click.performed += UI_Click;
-        inputActions.UI.ScrollWheel.performed += UI_ScrollWheel;
-        inputActions.UI.MiddleClick.performed += UI_MiddleClick;
-        inputActions.UI.Point.performed += UI_Point;
-        inputActions.UI.TrackedDevicePosition.performed += UI_TrackedDevicePosition;
-        inputActions.UI.TrackedDeviceOrientation.performed += UI_TrackedDeviceOrientation;
+        //inputActions.UI.Navigate.performed += UI_Navigate;
+        //inputActions.UI.Submit.performed += UI_Submit;
+        //inputActions.UI.Cancel.performed += UI_Cancel;
+        //inputActions.UI.Point.performed += UI_Point;
+        //inputActions.UI.Click.performed += UI_Click;
+        //inputActions.UI.ScrollWheel.performed += UI_ScrollWheel;
+        //inputActions.UI.MiddleClick.performed += UI_MiddleClick;
+        //inputActions.UI.Point.performed += UI_Point;
+        //inputActions.UI.TrackedDevicePosition.performed += UI_TrackedDevicePosition;
+        //inputActions.UI.TrackedDeviceOrientation.performed += UI_TrackedDeviceOrientation;
 
-        inputActions.UI.Navigate.Enable();
-        inputActions.UI.Submit.Enable();
-        inputActions.UI.Cancel.Enable();
-        inputActions.UI.Point.Enable();
-        inputActions.UI.Click.Enable();
-        inputActions.UI.ScrollWheel.Enable();
-        inputActions.UI.MiddleClick.Enable();
-        inputActions.UI.Point.Enable();
-        inputActions.UI.TrackedDevicePosition.Enable();
-        inputActions.UI.TrackedDeviceOrientation.Enable();
+        //inputActions.UI.Navigate.Enable();
+        //inputActions.UI.Submit.Enable();
+        //inputActions.UI.Cancel.Enable();
+        //inputActions.UI.Point.Enable();
+        //inputActions.UI.Click.Enable();
+        //inputActions.UI.ScrollWheel.Enable();
+        //inputActions.UI.MiddleClick.Enable();
+        //inputActions.UI.Point.Enable();
+        //inputActions.UI.TrackedDevicePosition.Enable();
+        //inputActions.UI.TrackedDeviceOrientation.Enable();
     }
 
     private void UI_TrackedDeviceOrientation(InputAction.CallbackContext context)
@@ -181,16 +183,16 @@ public class PlayerLocomotion : MonoBehaviour
         inputActions.Player.Fire.Disable();
 
 
-        uiNavigate.Disable();
-        uiSubmit.Disable();
-        uiCancel.Disable();
-        uiPoint.Disable();
-        uiClick.Disable();
-        uiScrollWheel.Disable();
-        uiMiddleClick.Disable();
-        uiRightClick.Disable();
-        uiTrackedDevicePosition.Disable();
-        uiTrackedDeviceOrientation.Disable();
+        //uiNavigate.Disable();
+        //uiSubmit.Disable();
+        //uiCancel.Disable();
+        //uiPoint.Disable();
+        //uiClick.Disable();
+        //uiScrollWheel.Disable();
+        //uiMiddleClick.Disable();
+        //uiRightClick.Disable();
+        //uiTrackedDevicePosition.Disable();
+        //uiTrackedDeviceOrientation.Disable();
     }
 
     private void Fire(InputAction.CallbackContext context)
