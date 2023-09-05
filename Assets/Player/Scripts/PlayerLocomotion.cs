@@ -16,12 +16,15 @@ public class PlayerLocomotion : MonoBehaviour
     InputAction move;
     InputAction look;
 
+    InputAction turn;
+    InputAction breakPedal;
+
     InputAction uiNavigate, uiSubmit, uiCancel, uiPoint, uiClick, uiScrollWheel, uiMiddleClick, uiRightClick, uiTrackedDevicePosition, uiTrackedDeviceOrientation;
 
     CharacterController characterController;
     public Transform cameraContainer;
     Transform playerContainer;
-
+    
     public float speed = 6.0f;
     //public float jumpSpeed = 10f;
     public float mouseSensitivity = 2f;
@@ -51,17 +54,27 @@ public class PlayerLocomotion : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(move.ReadValue<Vector2>() != Vector2.zero)
+        //if(move.ReadValue<Vector2>() != Vector2.zero)
+        //{
+        //    Debug.Log("Move: " + move.ReadValue<Vector2>());
+        //}
+        //if (look.ReadValue<Vector2>() != Vector2.zero)
+        //{
+        //    Debug.Log("Look: " + look.ReadValue<Vector2>());
+        //}
+
+        if (turn.ReadValue<float>() != 0f)
         {
-            Debug.Log("Move: " + move.ReadValue<Vector2>());
+            Debug.Log("Turn: " + turn.ReadValue<float>());
         }
-        if (look.ReadValue<Vector2>() != Vector2.zero)
+        if (breakPedal.ReadValue<float>() != 0f)
         {
-            Debug.Log("Look: " + look.ReadValue<Vector2>());
+            Debug.Log("Break Pedal: " + breakPedal.ReadValue<float>());
         }
 
-        Locomotion();
-        RotateAndLook();
+
+        //Locomotion();
+        //RotateAndLook();
     }
 
     private void OnEnable()
@@ -71,6 +84,12 @@ public class PlayerLocomotion : MonoBehaviour
 
         look = inputActions.Player.Look;
         look.Enable();
+
+        turn = inputActions.Player.Turn;
+        turn.Enable();
+
+        breakPedal = inputActions.Player.BreakPedal;
+        breakPedal.Enable();
 
         inputActions.Player.Fire.performed += Fire;
         inputActions.Player.Fire.Enable();
