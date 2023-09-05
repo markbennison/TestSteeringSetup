@@ -278,6 +278,17 @@
                     "path": "<Joystick>/stick/y",
                     "interactions": "",
                     "processors": "Normalize(min=-1,max=1,zero=-1)",
+                    "groups": "Joystick",
+                    "action": "BreakPedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e88d4c29-45f0-47fc-b454-8b91f000735c",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "BreakPedal",
                     "isComposite": false,
@@ -293,6 +304,61 @@
                     "action": "Turn",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "42dc4502-bb24-40d0-8a1e-d9bdc3d32a49",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=0.2,y=0.2)",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "6f5dc1cb-eb27-4814-912d-f53345108f91",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "75e96ebc-8112-4d3b-b0e3-8f6fe6be78b3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "3d4d95a6-99bc-4b26-a5ec-47c3293dcf26",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9267f8c3-2243-41f5-9c6a-0ec974165bf5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turn",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

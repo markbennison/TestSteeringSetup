@@ -45,7 +45,7 @@ public class PlayerLocomotion : MonoBehaviour
     {
         Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
-
+        inputActions.Player.Turn.Enable();
     }
 
     void Update()
@@ -193,6 +193,11 @@ public class PlayerLocomotion : MonoBehaviour
         //uiRightClick.Disable();
         //uiTrackedDevicePosition.Disable();
         //uiTrackedDeviceOrientation.Disable();
+    }
+
+    private void OnValidate()
+    {
+        //
     }
 
     private void Fire(InputAction.CallbackContext context)
