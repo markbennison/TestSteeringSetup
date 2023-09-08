@@ -317,7 +317,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=0.6)"",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""BreakPedal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -328,7 +328,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=0.6)"",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""BreakPedal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -394,7 +394,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -405,7 +405,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -416,7 +416,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=0.6)"",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -427,7 +427,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=0.6)"",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -437,7 +437,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""id"": ""130aa6fe-5d9f-4c4e-9758-2fdd1dccff73"",
                     ""path"": ""<Joystick>/rz"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Invert,Normalize(min=-1,max=1,zero=-1)"",
                     ""groups"": ""Joystick"",
                     ""action"": ""Accelerate"",
                     ""isComposite"": false,
