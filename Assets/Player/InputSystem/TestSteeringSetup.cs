@@ -53,24 +53,6 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Turn"",
-                    ""type"": ""Value"",
-                    ""id"": ""259510a6-43ea-44a7-bf2c-eff2ed431b51"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""BreakPedal"",
-                    ""type"": ""Value"",
-                    ""id"": ""4e7f8cc5-1469-4c90-96d8-677d899e7b60"",
-                    ""expectedControlType"": ""Analog"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -293,10 +275,67 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Drive"",
+            ""id"": ""8e5f24c7-93aa-4f32-8932-d9c82919d81c"",
+            ""actions"": [
+                {
+                    ""name"": ""Accelerate"",
+                    ""type"": ""Value"",
+                    ""id"": ""dda31da2-03ce-428c-b80c-7cf4cc303591"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""BreakPedal"",
+                    ""type"": ""Value"",
+                    ""id"": ""5bdbad73-cbb8-49c8-9d25-6b54a8034d70"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""dc83f321-e833-4190-a65b-3fa3f67c2e45"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f2ad0fe6-ecb2-4e58-9868-deca297e5a66"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.6)"",
+                    ""groups"": """",
+                    ""action"": ""BreakPedal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""68ca6380-c586-4b34-98c1-24840a7aa58a"",
+                    ""id"": ""bbaa7c41-ec8b-4db1-ba34-b2f6633b2a2b"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.6)"",
+                    ""groups"": """",
+                    ""action"": ""BreakPedal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f52773b-9638-4566-91b4-b29cc215a915"",
                     ""path"": ""<Joystick>/stick/y"",
                     ""interactions"": """",
                     ""processors"": ""Normalize(min=-1,max=1,zero=-1)"",
@@ -307,18 +346,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e88d4c29-45f0-47fc-b454-8b91f000735c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BreakPedal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c7148890-6e50-4d96-91f2-c987ed5c65a7"",
+                    ""id"": ""6e7bfb17-57a4-47c9-8e86-4bc40f7f909b"",
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -329,7 +357,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""2D Vector"",
-                    ""id"": ""42dc4502-bb24-40d0-8a1e-d9bdc3d32a49"",
+                    ""id"": ""2e8d5fce-b4a6-4e37-838c-231b7c8aa980"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": ""ScaleVector2(x=0.2,y=0.2)"",
@@ -340,7 +368,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""6f5dc1cb-eb27-4814-912d-f53345108f91"",
+                    ""id"": ""900cb886-c955-41a6-acb1-46f172884412"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
@@ -351,7 +379,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""75e96ebc-8112-4d3b-b0e3-8f6fe6be78b3"",
+                    ""id"": ""ad2bc7a7-dec5-4b39-95b3-9f47c313216c"",
                     ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
@@ -362,7 +390,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""3d4d95a6-99bc-4b26-a5ec-47c3293dcf26"",
+                    ""id"": ""6d8e51c6-bf8e-4887-be9d-712f2b9b074c"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -373,7 +401,7 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""9267f8c3-2243-41f5-9c6a-0ec974165bf5"",
+                    ""id"": ""7ad19253-2db0-4e7a-ba66-8132da6297bd"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -381,6 +409,39 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
                     ""action"": ""Turn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e17f964c-8f33-4065-bfb9-6942594386e3"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.6)"",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a9c4b41-4df5-4e6a-9ed6-4daa00108226"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.6)"",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""130aa6fe-5d9f-4c4e-9758-2fdd1dccff73"",
+                    ""path"": ""<Joystick>/rz"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -969,8 +1030,11 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_Turn = m_Player.FindAction("Turn", throwIfNotFound: true);
-        m_Player_BreakPedal = m_Player.FindAction("BreakPedal", throwIfNotFound: true);
+        // Drive
+        m_Drive = asset.FindActionMap("Drive", throwIfNotFound: true);
+        m_Drive_Accelerate = m_Drive.FindAction("Accelerate", throwIfNotFound: true);
+        m_Drive_BreakPedal = m_Drive.FindAction("BreakPedal", throwIfNotFound: true);
+        m_Drive_Turn = m_Drive.FindAction("Turn", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1047,8 +1111,6 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_Turn;
-    private readonly InputAction m_Player_BreakPedal;
     public struct PlayerActions
     {
         private @TestSteeringSetup m_Wrapper;
@@ -1056,8 +1118,6 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @Turn => m_Wrapper.m_Player_Turn;
-        public InputAction @BreakPedal => m_Wrapper.m_Player_BreakPedal;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1076,12 +1136,6 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
-            @Turn.started += instance.OnTurn;
-            @Turn.performed += instance.OnTurn;
-            @Turn.canceled += instance.OnTurn;
-            @BreakPedal.started += instance.OnBreakPedal;
-            @BreakPedal.performed += instance.OnBreakPedal;
-            @BreakPedal.canceled += instance.OnBreakPedal;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1095,12 +1149,6 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
-            @Turn.started -= instance.OnTurn;
-            @Turn.performed -= instance.OnTurn;
-            @Turn.canceled -= instance.OnTurn;
-            @BreakPedal.started -= instance.OnBreakPedal;
-            @BreakPedal.performed -= instance.OnBreakPedal;
-            @BreakPedal.canceled -= instance.OnBreakPedal;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1118,6 +1166,68 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Drive
+    private readonly InputActionMap m_Drive;
+    private List<IDriveActions> m_DriveActionsCallbackInterfaces = new List<IDriveActions>();
+    private readonly InputAction m_Drive_Accelerate;
+    private readonly InputAction m_Drive_BreakPedal;
+    private readonly InputAction m_Drive_Turn;
+    public struct DriveActions
+    {
+        private @TestSteeringSetup m_Wrapper;
+        public DriveActions(@TestSteeringSetup wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Accelerate => m_Wrapper.m_Drive_Accelerate;
+        public InputAction @BreakPedal => m_Wrapper.m_Drive_BreakPedal;
+        public InputAction @Turn => m_Wrapper.m_Drive_Turn;
+        public InputActionMap Get() { return m_Wrapper.m_Drive; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DriveActions set) { return set.Get(); }
+        public void AddCallbacks(IDriveActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DriveActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DriveActionsCallbackInterfaces.Add(instance);
+            @Accelerate.started += instance.OnAccelerate;
+            @Accelerate.performed += instance.OnAccelerate;
+            @Accelerate.canceled += instance.OnAccelerate;
+            @BreakPedal.started += instance.OnBreakPedal;
+            @BreakPedal.performed += instance.OnBreakPedal;
+            @BreakPedal.canceled += instance.OnBreakPedal;
+            @Turn.started += instance.OnTurn;
+            @Turn.performed += instance.OnTurn;
+            @Turn.canceled += instance.OnTurn;
+        }
+
+        private void UnregisterCallbacks(IDriveActions instance)
+        {
+            @Accelerate.started -= instance.OnAccelerate;
+            @Accelerate.performed -= instance.OnAccelerate;
+            @Accelerate.canceled -= instance.OnAccelerate;
+            @BreakPedal.started -= instance.OnBreakPedal;
+            @BreakPedal.performed -= instance.OnBreakPedal;
+            @BreakPedal.canceled -= instance.OnBreakPedal;
+            @Turn.started -= instance.OnTurn;
+            @Turn.performed -= instance.OnTurn;
+            @Turn.canceled -= instance.OnTurn;
+        }
+
+        public void RemoveCallbacks(IDriveActions instance)
+        {
+            if (m_Wrapper.m_DriveActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDriveActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DriveActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DriveActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DriveActions @Drive => new DriveActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1286,8 +1396,12 @@ public partial class @TestSteeringSetup: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
-        void OnTurn(InputAction.CallbackContext context);
+    }
+    public interface IDriveActions
+    {
+        void OnAccelerate(InputAction.CallbackContext context);
         void OnBreakPedal(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

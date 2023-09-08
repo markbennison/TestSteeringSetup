@@ -12,15 +12,14 @@ using UnityEngine.InputSystem;
 public class PlayerLocomotion : MonoBehaviour
 {
 
-    TestSteeringSetup inputActions;
-    InputAction move;
-    InputAction look;
+    //TestSteeringSetup inputActions;
+    //InputAction move;
+    //InputAction look;
 
     InputAction turn;
     InputAction turnx;
     InputAction breakPedal;
-
-    InputAction uiNavigate, uiSubmit, uiCancel, uiPoint, uiClick, uiScrollWheel, uiMiddleClick, uiRightClick, uiTrackedDevicePosition, uiTrackedDeviceOrientation;
+    InputAction accelerate;
 
     CharacterController characterController;
     public Transform cameraContainer;
@@ -36,16 +35,17 @@ public class PlayerLocomotion : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotateX, rotateY;
 
+
     private void Awake()
     {
-        inputActions = new TestSteeringSetup();
+        //inputActions = new TestSteeringSetup();
     }
 
     void Start()
     {
         Cursor.visible = false;
         characterController = GetComponent<CharacterController>();
-        inputActions.Player.Turn.Enable();
+        GameManager.InputManager.inputActions.Drive.Turn.Enable();
     }
 
     void Update()
@@ -64,9 +64,9 @@ public class PlayerLocomotion : MonoBehaviour
         //    Debug.Log("Look: " + look.ReadValue<Vector2>());
         //}
 
-
         Debug.Log("Turn: " + turn.ReadValue<Vector2>().x);
-        Debug.Log("Move: " + move.ReadValue<Vector2>().x);
+        Debug.Log("Accelerate: " + accelerate.ReadValue<float>());
+        //Debug.Log("Move: " + move.ReadValue<Vector2>().x);
 
 
         //if (breakPedal.ReadValue<float>() != 0f)
@@ -81,162 +81,74 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void OnEnable()
     {
-        move = inputActions.Player.Move;
-        move.Enable();
+        //move = GameManager.InputManager.inputActions.Player.Move;
+        //move.Enable();
 
-        look = inputActions.Player.Look;
-        look.Enable();
+        //look = GameManager.InputManager.inputActions.Player.Look;
+        //look.Enable();
 
-        turn = inputActions.Player.Turn;
+        turn = GameManager.InputManager.inputActions.Drive.Turn;
         turn.Enable();
 
-        breakPedal = inputActions.Player.BreakPedal;
+        accelerate = GameManager.InputManager.inputActions.Drive.Accelerate;
+        accelerate.Enable();
+
+        breakPedal = GameManager.InputManager.inputActions.Drive.BreakPedal;
         breakPedal.Enable();
 
-        inputActions.Player.Fire.performed += Fire;
-        inputActions.Player.Fire.Enable();
+        GameManager.InputManager.inputActions.Player.Fire.performed += Fire;
+        GameManager.InputManager.inputActions.Player.Fire.Enable();
 
-
-        //uiNavigate = inputActions.UI.Navigate;
-        //uiSubmit = inputActions.UI.Submit;
-        //uiCancel = inputActions.UI.Cancel;
-        //uiPoint = inputActions.UI.Point;
-        //uiClick = inputActions.UI.Click;
-        //uiScrollWheel = inputActions.UI.ScrollWheel;
-        //uiMiddleClick = inputActions.UI.MiddleClick;
-        //uiRightClick = inputActions.UI.Point;
-        //uiTrackedDevicePosition = inputActions.UI.TrackedDevicePosition;
-        //uiTrackedDeviceOrientation = inputActions.UI.TrackedDeviceOrientation;
-
-        //inputActions.UI.Navigate.performed += UI_Navigate;
-        //inputActions.UI.Submit.performed += UI_Submit;
-        //inputActions.UI.Cancel.performed += UI_Cancel;
-        //inputActions.UI.Point.performed += UI_Point;
-        //inputActions.UI.Click.performed += UI_Click;
-        //inputActions.UI.ScrollWheel.performed += UI_ScrollWheel;
-        //inputActions.UI.MiddleClick.performed += UI_MiddleClick;
-        //inputActions.UI.Point.performed += UI_Point;
-        //inputActions.UI.TrackedDevicePosition.performed += UI_TrackedDevicePosition;
-        //inputActions.UI.TrackedDeviceOrientation.performed += UI_TrackedDeviceOrientation;
-
-        //inputActions.UI.Navigate.Enable();
-        //inputActions.UI.Submit.Enable();
-        //inputActions.UI.Cancel.Enable();
-        //inputActions.UI.Point.Enable();
-        //inputActions.UI.Click.Enable();
-        //inputActions.UI.ScrollWheel.Enable();
-        //inputActions.UI.MiddleClick.Enable();
-        //inputActions.UI.Point.Enable();
-        //inputActions.UI.TrackedDevicePosition.Enable();
-        //inputActions.UI.TrackedDeviceOrientation.Enable();
-    }
-
-    private void UI_TrackedDeviceOrientation(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_TrackedDeviceOrientation");
-    }
-
-    private void UI_TrackedDevicePosition(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_TrackedDevicePosition");
-    }
-
-    private void UI_MiddleClick(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_MiddleClick");
-    }
-
-    private void UI_ScrollWheel(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_ScrollWheel");
-    }
-
-    private void UI_Click(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_Click");
-    }
-
-    private void UI_Point(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_Point");
-    }
-
-    private void UI_Cancel(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_Cancel");
-    }
-
-    private void UI_Submit(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_Submit");
-    }
-
-    private void UI_Navigate(InputAction.CallbackContext context)
-    {
-        Debug.Log("UI_Navigate");
     }
 
     private void OnDisable()
     {
-        move.Disable();
-        look.Disable();
-        inputActions.Player.Fire.Disable();
+        //move.Disable();
+        //look.Disable();
+        turn.Disable();
+        accelerate.Disable();
+        breakPedal.Disable();
 
-
-        //uiNavigate.Disable();
-        //uiSubmit.Disable();
-        //uiCancel.Disable();
-        //uiPoint.Disable();
-        //uiClick.Disable();
-        //uiScrollWheel.Disable();
-        //uiMiddleClick.Disable();
-        //uiRightClick.Disable();
-        //uiTrackedDevicePosition.Disable();
-        //uiTrackedDeviceOrientation.Disable();
-    }
-
-    private void OnValidate()
-    {
-        //
+        GameManager.InputManager.inputActions.Player.Fire.Disable();
     }
 
     private void Fire(InputAction.CallbackContext context)
     {
-        //throw new NotImplementedException();
+
         Debug.Log("Fire Button Pressed");
     }
 
-    void Locomotion()
-    {
-        if (characterController.isGrounded) // When grounded, set y-axis to zero (to ignore it)
-        {
-            Vector2 moveInput = move.ReadValue<Vector2>();
-            moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-        }
+    //void Locomotion()
+    //{
+    //    if (characterController.isGrounded) // When grounded, set y-axis to zero (to ignore it)
+    //    {
+    //        Vector2 moveInput = move.ReadValue<Vector2>();
+    //        moveDirection = new Vector3(moveInput.x, 0f, moveInput.y);
+    //        moveDirection = transform.TransformDirection(moveDirection);
+    //        moveDirection *= speed;
+    //    }
 
-        moveDirection.y -= gravity * Time.deltaTime;
-        characterController.Move(moveDirection * Time.deltaTime);
-    }
+    //    moveDirection.y -= gravity * Time.deltaTime;
+    //    characterController.Move(moveDirection * Time.deltaTime);
+    //}
 
-    void RotateAndLook()
-    {
-        Vector2 lookInput = look.ReadValue<Vector2>();
-        rotateX = lookInput.x * mouseSensitivity;
-        rotateY -= lookInput.y * mouseSensitivity;
+    //void RotateAndLook()
+    //{
+    //    Vector2 lookInput = look.ReadValue<Vector2>();
+    //    rotateX = lookInput.x * mouseSensitivity;
+    //    rotateY -= lookInput.y * mouseSensitivity;
 
-        rotateX += cameraContainer.transform.localRotation.eulerAngles.y;
-        //rotateY += cameraContainer.transform.localRotation.eulerAngles.x;
+    //    rotateX += cameraContainer.transform.localRotation.eulerAngles.y;
+    //    //rotateY += cameraContainer.transform.localRotation.eulerAngles.x;
 
-        //rotateX = Mathf.Clamp(rotateX, -30f, +30f);
-        rotateY = Mathf.Clamp(rotateY, lookUpClamp, lookDownClamp);
+    //    //rotateX = Mathf.Clamp(rotateX, -30f, +30f);
+    //    rotateY = Mathf.Clamp(rotateY, lookUpClamp, lookDownClamp);
 
-        //Debug.Log("XY: " + rotateX + "," + rotateY);
+    //    //Debug.Log("XY: " + rotateX + "," + rotateY);
 
-        //cameraContainer.transform.Rotate(0f, rotateX, 0f);
-        //cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, transform.localRotation.y, transform.localRotation.z);
+    //    //cameraContainer.transform.Rotate(0f, rotateX, 0f);
+    //    //cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, transform.localRotation.y, transform.localRotation.z);
 
-        cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, rotateX, 0f);
-    }
+    //    cameraContainer.transform.localRotation = Quaternion.Euler(rotateY, rotateX, 0f);
+    //}
 }
